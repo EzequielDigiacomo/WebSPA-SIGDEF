@@ -1,0 +1,11 @@
+/* App.css - Estilos adicionales de la aplicación */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Animación del dot en el badge del Hero */
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(45, 140, 80, 0.6); }
+  50%       { box-shadow: 0 0 0 6px rgba(45, 140, 80, 0); }
+}
