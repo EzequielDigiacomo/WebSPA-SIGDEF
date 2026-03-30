@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   LayoutDashboard,
   Users,
@@ -83,6 +84,15 @@ function TierIcon({ icon: Icon, color }) {
 
 /* ─── App ──────────────────────────────────────────────── */
 function App() {
+  const [nivelInteres, setNivelInteres] = useState('');
+
+  const selectNivel = (nivel) => {
+    setNivelInteres(nivel);
+    setTimeout(() => {
+      document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   return (
     <div className="animate-fade-in">
 
@@ -99,8 +109,8 @@ function App() {
           <SigdefLogo size="sm" />
         </div>
         <div className="nav-links" style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
-          <a href="#niveles" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 500, fontSize: '0.95rem', transition: 'var(--transition)' }}
-            onMouseEnter={e => e.target.style.color = 'var(--verde-sig)'} onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}>Niveles</a>
+          <a href="#servicios" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 500, fontSize: '0.95rem', transition: 'var(--transition)' }}
+            onMouseEnter={e => e.target.style.color = 'var(--verde-sig)'} onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}>Servicios</a>
           <a href="#mobile" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 500, fontSize: '0.95rem', transition: 'var(--transition)' }}
             onMouseEnter={e => e.target.style.color = 'var(--verde-sig)'} onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}>App Móvil</a>
           <a href="#arquitectura" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 500, fontSize: '0.95rem', transition: 'var(--transition)' }}
@@ -146,7 +156,7 @@ function App() {
       </section>
 
       {/* ── NIVELES DE SERVICIO ── */}
-      <section id="niveles" style={{ background: 'rgba(26, 48, 85, 0.08)', borderTop: '1px solid rgba(45,140,80,0.1)', borderBottom: '1px solid rgba(45,140,80,0.1)' }}>
+      <section id="servicios" style={{ background: 'rgba(26, 48, 85, 0.08)', borderTop: '1px solid rgba(45,140,80,0.1)', borderBottom: '1px solid rgba(45,140,80,0.1)', padding: '3.5rem 0' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
             <h2 style={{ fontSize: '3rem', marginBottom: '0.75rem' }}>
@@ -174,7 +184,7 @@ function App() {
                 <li><FileCheck2 size={14} style={{ flexShrink: 0 }} /> Validación de Documentación Interna</li>
                 <li><BarChart3 size={14} style={{ flexShrink: 0 }} /> Reportes Excel en Tiempo Real</li>
               </ul>
-              <a href="#contacto" className="btn-secondary" style={{ width: '100%', textAlign: 'center', padding: '0.75rem', textDecoration: 'none' }}>Consultar Base</a>
+              <button onClick={() => selectNivel('Base')} className="btn-secondary" style={{ width: '100%', textAlign: 'center', padding: '0.75rem', cursor: 'pointer' }}>Consultar Base</button>
             </div>
 
             {/* NIVEL 2: STANDARD */}
@@ -194,7 +204,7 @@ function App() {
                 <li><FileCheck2 size={14} style={{ flexShrink: 0 }} /> Flujo de Aprobación Remota en Tiempo Real</li>
                 <li><SlidersHorizontal size={14} style={{ flexShrink: 0 }} /> Filtros Avanzados por Club, Pago, Vigencia, Categoría</li>
               </ul>
-              <a href="#contacto" className="btn-primary" style={{ width: '100%', textAlign: 'center', textDecoration: 'none' }}>Consultar Standard</a>
+              <button onClick={() => selectNivel('Standard')} className="btn-primary" style={{ width: '100%', textAlign: 'center', cursor: 'pointer' }}>Consultar Standard</button>
             </div>
 
             {/* NIVEL 3: PREMIUM */}
@@ -212,7 +222,12 @@ function App() {
                 <li><FileText size={14} style={{ flexShrink: 0 }} /> Resoluciones y circulares oficiales digitales</li>
                 <li><Smartphone size={14} style={{ flexShrink: 0, color: 'var(--azul-def-light)' }} /><strong style={{ color: 'var(--azul-def-light)' }}> App Móvil Dedicada</strong> — Gestión completa desde Android e iOS</li>
               </ul>
-              <a href="#mobile" className="btn-secondary" style={{ width: '100%', textAlign: 'center', padding: '0.75rem', textDecoration: 'none' }}>Ver App Móvil ↓</a>
+              <div style={{ display: 'grid', gap: '0.5rem' }}>
+                <button onClick={() => selectNivel('Premium')} className="btn-secondary" style={{ width: '100%', textAlign: 'center', padding: '0.75rem', cursor: 'pointer' }}>Consultar Premium</button>
+                <a href="#mobile" style={{ width: '100%', textAlign: 'center', padding: '0.5rem', textDecoration: 'none', color: 'var(--text-muted)', fontSize: '0.8rem', display: 'block', transition: 'var(--transition)' }}
+                  onMouseEnter={e => e.target.style.color = 'var(--azul-def-light)'} onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
+                >Ver App Móvil ↓</a>
+              </div>
             </div>
           </div>
         </div>
@@ -328,64 +343,64 @@ function App() {
       {/* ── ARQUITECTURA ESCALABLE ── */}
       <section id="arquitectura" style={{ background: 'rgba(26, 48, 85, 0.08)', borderTop: '1px solid rgba(45,140,80,0.1)', borderBottom: '1px solid rgba(45,140,80,0.1)' }}>
         <div className="container">
-        <div className="arch-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: '5rem', alignItems: 'start' }}>
-          <div style={{ textAlign: 'left' }}>
-            <h2 style={{ fontSize: '2.8rem', marginBottom: '1rem' }}>
-              Arquitectura <span className="gradient-text">Escalable</span>
-            </h2>
-            <div className="section-divider" style={{ margin: '1rem 0 2rem', width: 50 }} />
-            <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.75 }}>
-              Nuestro sistema está diseñado para crecer junto a tu institución. Construido con <strong style={{ color: 'var(--text-main)' }}>React + .NET</strong>, garantizamos robustez, seguridad y máxima flexibilidad sin interrupciones.
-            </p>
-            <div style={{ display: 'grid', gap: '2rem' }}>
-              {[
-                [Code2, 'Reutilización de Código', 'El Dashboard del Club es una versión optimizada del de la Federación. Un solo sistema, múltiples roles configurables.'],
-                [TrendingUp, 'Escalabilidad Técnica', 'Los servicios de identidad base permanecen intactos. Agregamos capas de mensajería y auditoría al hacer upgrade, sin migrar datos.'],
-                [Layers, 'Crecimiento Sin Fricción', 'Tu sistema siempre está listo para el siguiente nivel. El cliente ve lo que viene y decide cuándo crecer.'],
-              ].map(([Icon, title, desc]) => (
-                <div key={title} style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
-                  <IconBox icon={Icon} />
-                  <div>
-                    <h4 style={{ fontSize: '1.15rem', marginBottom: '0.4rem' }}>{title}</h4>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.65 }}>{desc}</p>
+          <div className="arch-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: '5rem', alignItems: 'start' }}>
+            <div style={{ textAlign: 'left' }}>
+              <h2 style={{ fontSize: '2.8rem', marginBottom: '1rem' }}>
+                Arquitectura <span className="gradient-text">Escalable</span>
+              </h2>
+              <div className="section-divider" style={{ margin: '1rem 0 2rem', width: 50 }} />
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.75 }}>
+                Nuestro sistema está diseñado para crecer junto a tu institución. Construido con <strong style={{ color: 'var(--text-main)' }}>React + .NET</strong>, garantizamos robustez, seguridad y máxima flexibilidad sin interrupciones.
+              </p>
+              <div style={{ display: 'grid', gap: '2rem' }}>
+                {[
+                  [Code2, 'Reutilización de Código', 'El Dashboard del Club es una versión optimizada del de la Federación. Un solo sistema, múltiples roles configurables.'],
+                  [TrendingUp, 'Escalabilidad Técnica', 'Los servicios de identidad base permanecen intactos. Agregamos capas de mensajería y auditoría al hacer upgrade, sin migrar datos.'],
+                  [Layers, 'Crecimiento Sin Fricción', 'Tu sistema siempre está listo para el siguiente nivel. El cliente ve lo que viene y decide cuándo crecer.'],
+                ].map(([Icon, title, desc]) => (
+                  <div key={title} style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
+                    <IconBox icon={Icon} />
+                    <div>
+                      <h4 style={{ fontSize: '1.15rem', marginBottom: '0.4rem' }}>{title}</h4>
+                      <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.65 }}>{desc}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="glass-card" style={{ textAlign: 'center', padding: '3rem 2rem' }}>
-            <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
-              <div style={{
-                width: 72, height: 72, borderRadius: '1.25rem',
-                background: 'rgba(45, 140, 80, 0.1)', border: '1px solid rgba(45, 140, 80, 0.25)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center'
-              }}>
-                <Zap size={36} color="var(--verde-sig)" strokeWidth={1.5} />
+                ))}
               </div>
             </div>
-            <h3 style={{ fontSize: '1.8rem', marginBottom: '1.25rem' }}>Tecnología de <span className="gradient-text">Vanguardia</span></h3>
-            <div style={{ display: 'grid', gap: '1rem', marginTop: '2rem' }}>
-              {[
-                ['Frontend', 'React + Vite', 'var(--verde-sig)'],
-                ['Backend', '.NET Core API', 'var(--azul-def-light)'],
-                ['Base de Datos', 'PostgreSQL', 'var(--verde-sig)'],
-                ['Seguridad', 'JWT + Roles', 'var(--azul-def-light)'],
-              ].map(([cat, tech, color]) => (
-                <div key={cat} style={{
-                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                  padding: '0.75rem 1rem',
-                  background: 'rgba(26, 48, 85, 0.25)',
-                  borderRadius: '0.75rem',
-                  border: '1px solid rgba(45, 140, 80, 0.1)'
+
+            <div className="glass-card" style={{ textAlign: 'center', padding: '3rem 2rem' }}>
+              <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
+                <div style={{
+                  width: 72, height: 72, borderRadius: '1.25rem',
+                  background: 'rgba(45, 140, 80, 0.1)', border: '1px solid rgba(45, 140, 80, 0.25)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center'
                 }}>
-                  <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{cat}</span>
-                  <span style={{ color, fontWeight: 700, fontSize: '0.9rem' }}>{tech}</span>
+                  <Zap size={36} color="var(--verde-sig)" strokeWidth={1.5} />
                 </div>
-              ))}
+              </div>
+              <h3 style={{ fontSize: '1.8rem', marginBottom: '1.25rem' }}>Tecnología de <span className="gradient-text">Vanguardia</span></h3>
+              <div style={{ display: 'grid', gap: '1rem', marginTop: '2rem' }}>
+                {[
+                  ['Frontend', 'React + Vite', 'var(--verde-sig)'],
+                  ['Backend', '.NET Core API', 'var(--azul-def-light)'],
+                  ['Base de Datos', 'PostgreSQL', 'var(--verde-sig)'],
+                  ['Seguridad', 'JWT + Roles', 'var(--azul-def-light)'],
+                ].map(([cat, tech, color]) => (
+                  <div key={cat} style={{
+                    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    padding: '0.75rem 1rem',
+                    background: 'rgba(26, 48, 85, 0.25)',
+                    borderRadius: '0.75rem',
+                    border: '1px solid rgba(45, 140, 80, 0.1)'
+                  }}>
+                    <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{cat}</span>
+                    <span style={{ color, fontWeight: 700, fontSize: '0.9rem' }}>{tech}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </section>
 
@@ -451,7 +466,33 @@ function App() {
                 <label htmlFor="contact-email">Email</label>
                 <input id="contact-email" type="email" placeholder="tuemail@institución.com" required />
                 <label htmlFor="contact-nivel">Nivel de Interés</label>
-                <input id="contact-nivel" type="text" placeholder="Base / Standard / Premium" />
+                <select
+                  id="contact-nivel"
+                  value={nivelInteres}
+                  onChange={(e) => setNivelInteres(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    background: nivelInteres ? 'rgba(45, 140, 80, 0.12)' : 'rgba(26, 48, 85, 0.2)',
+                    border: nivelInteres ? '1px solid var(--verde-sig)' : '1px solid var(--border-navy)',
+                    borderRadius: '0.75rem',
+                    color: nivelInteres ? 'var(--text-main)' : 'var(--text-muted)',
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '1rem',
+                    transition: 'var(--transition)',
+                    marginBottom: '1.25rem',
+                    cursor: 'pointer',
+                    appearance: 'none',
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a9bb5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'right 1rem center',
+                  }}
+                >
+                  <option value="" style={{ background: 'var(--bg-primary)', color: 'var(--text-muted)' }}>Seleccioná un nivel...</option>
+                  <option value="Base" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>🟢 SIGDEF Base — El Padrón Digital</option>
+                  <option value="Standard" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>⭐ SIGDEF Standard — Gestión Institucional</option>
+                  <option value="Premium" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>⚡ SIGDEF Premium — El Ecosistema Conectado</option>
+                </select>
                 <label htmlFor="contact-mensaje">Mensaje</label>
                 <textarea id="contact-mensaje" rows={3} placeholder="Contanos cómo podemos ayudarte a crear tu software acorde a tus necesidades"></textarea>
                 <button type="submit" className="btn-primary" style={{ width: '100%', padding: '0.9rem', fontSize: '1rem', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
