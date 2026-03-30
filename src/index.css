@@ -332,10 +332,22 @@ section {
 
 @media (max-width: 768px) {
   nav {
-    padding: 1rem 1.5rem !important;
-    margin: 0.5rem !important;
+    padding: 0.5rem 0.75rem !important;
+    margin: 0.4rem !important;
+    gap: 0.5rem;
   }
-  nav .nav-links { display: none; }
+  nav .nav-links {
+    gap: 0.6rem !important;
+  }
+  nav .nav-links a {
+    font-size: 0.7rem !important;
+  }
+  nav .nav-links .btn-primary {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.7rem !important;
+  }
+  .logo-full { display: none !important; }
+  .logo-icon { display: block !important; }
   section { padding: 5rem 0; }
   .footer-grid {
     grid-template-columns: 1fr !important;
