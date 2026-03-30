@@ -246,17 +246,21 @@ function App() {
 
       {/* ── APP MÓVIL / MULTIPLATAFORMA ── */}
       <section id="mobile" className="container" style={{ paddingTop: '6rem', paddingBottom: '6rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center' }}>
+        <div className="mobile-grid">
 
-          {/* Texto izquierdo */}
-          <div style={{ textAlign: 'left' }}>
+          {/* Texto superior */}
+          <div className="mobile-text-top" style={{ textAlign: 'left' }}>
             <h2 style={{ fontSize: '2.8rem', marginBottom: '1rem' }}>
               También en tu <span className="gradient-text">Celular</span>
             </h2>
             <div className="section-divider" style={{ margin: '1rem 0 2rem', width: 50 }} />
-            <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.75 }}>
+            <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', marginBottom: '0', lineHeight: 1.75 }}>
               SIGDEF no se queda en el escritorio. Diseñamos una <strong style={{ color: 'var(--text-main)' }}>aplicación móvil nativa</strong> para que los delegados, entrenadores y administradores puedan gestionar su federación desde cualquier lugar.
             </p>
+          </div>
+
+          {/* Features */}
+          <div className="mobile-features" style={{ textAlign: 'left' }}>
             <div style={{ display: 'grid', gap: '1.5rem' }}>
               {[
                 [Smartphone, 'Android e iOS', 'App nativa en React Native. Misma experiencia, mismo diseño, en cada dispositivo.'],
@@ -281,7 +285,7 @@ function App() {
           </div>
 
           {/* Phone mockup */}
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div className="mobile-mockup" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div style={{
               width: 260,
               background: '#0a0f1e',

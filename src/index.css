@@ -283,6 +283,26 @@ input:focus, textarea:focus {
   align-items: start;
 }
 
+.mobile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "top mockup"
+    "features mockup";
+  gap: 1.5rem 5rem;
+}
+.mobile-text-top {
+  grid-area: top;
+  align-self: end;
+}
+.mobile-features {
+  grid-area: features;
+  align-self: start;
+}
+.mobile-mockup {
+  grid-area: mockup;
+}
+
 section {
   padding: 8rem 0;
 }
@@ -323,6 +343,21 @@ section {
   }
   .arch-grid {
     grid-template-columns: 1fr !important;
+  }
+  .mobile-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "top"
+      "mockup"
+      "features" !important;
+    gap: 2.5rem !important;
+  }
+  .mobile-text-top {
+    text-align: center !important;
+  }
+  .mobile-text-top .section-divider {
+    margin-left: auto;
+    margin-right: auto;
   }
   .footer-grid {
     grid-template-columns: 1fr 1fr !important;
