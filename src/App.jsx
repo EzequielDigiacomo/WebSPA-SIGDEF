@@ -147,17 +147,17 @@ function App() {
 
           <h1 style={{ fontSize: '4.2rem', marginBottom: '1.5rem', lineHeight: 1.05 }}>
             Potenciando <br />
-            <span className="gradient-text">Federaciones</span><br />
+            <span className="gradient-text">Federacionses</span><br />
             con Tecnología
           </h1>
           <p style={{ fontSize: '1.15rem', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-            Software integral diseñado específicamente para federaciones deportivas. Desde la gestión de atletas hasta torneos y finanzas, todo en un solo sistema.
+            Software que optimiza la administración central de su federación con una plataforma integral diseñada para el control institucional.
           </p>
           <div className="hero-btn-group" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <a href="#niveles" className="btn-primary" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
               Ver Planes <ArrowRight size={16} />
             </a>
-            <a href="#arquitectura" className="btn-secondary" style={{ textDecoration: 'none' }}>Cómo Funciona</a>
+            <a href="#arquitectura" className="btn-secondary" style={{ textDecoration: 'none' }}>Nuestra Tecnología</a>
           </div>
         </div>
 
@@ -171,7 +171,7 @@ function App() {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
             <h2 style={{ fontSize: '3rem', marginBottom: '0.75rem' }}>
-              Niveles de Servicio <span className="gradient-text">SIGDEF</span>
+              Servicios de <span className="gradient-text">SIGDEF</span>
             </h2>
             <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto' }}>
               Desde la digitalización básica hasta un ecosistema totalmente conectado. Tu federación elige el nivel y crece cuando lo decide.
@@ -251,11 +251,11 @@ function App() {
           {/* Texto superior */}
           <div className="mobile-text-top" style={{ textAlign: 'left' }}>
             <h2 style={{ fontSize: '2.8rem', marginBottom: '1rem' }}>
-              También en tu <span className="gradient-text">Celular</span>
+              App Nativa para tu <span className="gradient-text">Celular</span>
             </h2>
             <div className="section-divider" style={{ margin: '1rem 0 2rem', width: 50 }} />
             <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', marginBottom: '0', lineHeight: 1.75 }}>
-              SIGDEF no se queda en el escritorio. Diseñamos una <strong style={{ color: 'var(--text-main)' }}>aplicación móvil nativa</strong> para que los delegados, entrenadores y administradores puedan gestionar su federación desde cualquier lugar.
+              SIGDEF no se queda en el escritorio. Diseñamos una <strong style={{ color: 'var(--text-main)' }}>aplicación móvil nativa</strong> para que los delegados, entrenadores y administradores puedan gestionar su federación o clubes desde cualquier lugar.
             </p>
           </div>
 
@@ -263,7 +263,7 @@ function App() {
           <div className="mobile-features" style={{ textAlign: 'left' }}>
             <div style={{ display: 'grid', gap: '1.5rem' }}>
               {[
-                [Smartphone, 'Android e iOS', 'App nativa en React Native. Misma experiencia, mismo diseño, en cada dispositivo.'],
+                [Smartphone, 'Android', 'App nativa en React Native. Misma experiencia, mismo diseño, en cada dispositivo.'],
                 [LayoutDashboard, 'Panel completo en el bolsillo', 'Acceso a todos los módulos: Atletas, Clubes, Pagos, Entrenadores y más.'],
                 [Wifi, 'Sincronización en tiempo real', 'Los cambios se reflejan instantáneamente entre la app móvil y el panel web.'],
               ].map(([Icon, title, desc]) => (
