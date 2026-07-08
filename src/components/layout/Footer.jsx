@@ -6,11 +6,8 @@ export function Footer() {
     <footer style={{ borderTop: '1px solid rgba(45, 140, 80, 0.15)', background: 'rgba(13, 22, 36, 0.8)', paddingTop: '4rem', paddingBottom: '2rem' }}>
       <div className="container footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1.5fr', gap: '3rem', marginBottom: '3rem', textAlign: 'left' }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <SigdefLogo size="sm" />
-            <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', borderLeft: '1px solid rgba(255,255,255,0.15)', paddingLeft: '0.75rem' }}>
-              <span style={{ color: 'var(--verde-sig-light)' }}>&</span> SportTrack
-            </span>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <SigdefLogo size="lg" />
           </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '1.25rem', lineHeight: 1.7, maxWidth: '280px' }}>
             Líderes en transformación digital y cronometraje en vivo para entidades deportivas en Argentina y Latinoamérica.

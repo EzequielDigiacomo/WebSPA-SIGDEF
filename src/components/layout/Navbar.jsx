@@ -10,21 +10,8 @@ export function Navbar() {
       backdropFilter: 'blur(20px)',
       border: '1px solid rgba(45, 140, 80, 0.2)',
     }}>
-      <div style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+      <div style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
         <SigdefLogo size="sm" />
-        <span style={{
-          fontSize: '1.15rem',
-          fontWeight: 800,
-          letterSpacing: '-0.5px',
-          color: 'var(--text-main)',
-          borderLeft: '1px solid rgba(255,255,255,0.15)',
-          paddingLeft: '0.75rem',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.25rem'
-        }} className="logo-full">
-          <span style={{ color: 'var(--verde-sig-light)' }}>&</span> SportTrack
-        </span>
       </div>
       <div className="nav-links" style={{ display: 'flex', gap: '1.75rem', alignItems: 'center' }}>
         <a href="#sistemas" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 500, fontSize: '0.9rem', transition: 'var(--transition)' }}
