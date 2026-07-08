@@ -453,3 +453,130 @@ section {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* ── ESTILOS ADICIONALES PARA MOCKUPS DE IMÁGENES ── */
+
+/* Botón cápsula verde */
+.btn-acc-green {
+  background-color: #10b981 !important;
+  color: #0b0f19 !important;
+  font-weight: 700 !important;
+  border-radius: 9999px !important;
+  padding: 0.75rem 2rem !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+  text-decoration: none !important;
+}
+
+.btn-acc-green:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5) !important;
+  filter: brightness(1.1);
+}
+
+/* Botón cápsula azul (SportTrack) */
+.btn-acc-blue {
+  background-color: #0070f3 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border-radius: 9999px !important;
+  padding: 0.75rem 2rem !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 112, 243, 0.35) !important;
+  text-decoration: none !important;
+}
+
+.btn-acc-blue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 112, 243, 0.55) !important;
+  filter: brightness(1.1);
+}
+
+/* Botón cápsula bordeado */
+.btn-acc-outline {
+  background-color: rgba(15, 23, 42, 0.5) !important;
+  color: #f8fafc !important;
+  font-weight: 600 !important;
+  border-radius: 9999px !important;
+  padding: 0.75rem 2rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  transition: all 0.3s ease !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.btn-acc-outline:hover {
+  border-color: #10b981 !important;
+  background-color: rgba(16, 185, 129, 0.08) !important;
+  transform: translateY(-1px);
+}
+
+.btn-acc-outline-blue:hover {
+  border-color: #0070f3 !important;
+  background-color: rgba(0, 112, 243, 0.08) !important;
+  transform: translateY(-1px);
+}
+
+/* Checkmarks personalizados en listas de precios */
+.icon-check-green {
+  color: #10b981 !important;
+  flex-shrink: 0;
+}
+
+.icon-check-blue {
+  color: #0070f3 !important;
+  flex-shrink: 0;
+}
+
+/* Re-definición de inputs a tema oscuro premium */
+.contact-input-dark {
+  background: rgba(13, 22, 36, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+  padding: 0.75rem 1rem !important;
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  transition: var(--transition);
+  margin-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.contact-input-dark:focus {
+  outline: none !important;
+  border-color: #10b981 !important;
+  background: rgba(13, 22, 36, 0.8) !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15) !important;
+}
+
+/* Quitar el check generado por CSS por defecto en listas */
+.tier-card.featured .feature-list li::before,
+.tier-card .feature-list li::before {
+  display: none !important;
+}
+
+/* Decorador de línea verde/azul */
+.app-line-decorator {
+  width: 60px;
+  height: 4px;
+  background-color: #10b981;
+  border-radius: 2px;
+  margin-top: 1rem;
+}
+

@@ -1,14 +1,17 @@
 import { useState } from 'react';
-import { LayoutDashboard, Users, Tags, FileText, ShieldCheck, FileCheck2, BarChart3, Building2, Image, CreditCard, SlidersHorizontal, MessageSquare, Bell, ClipboardList, HardDrive, Smartphone, CheckCircle2, Zap, Layers, Timer, Tv, Globe, Award, Sparkles } from 'lucide-react';
+import { LayoutDashboard, Building2, Zap, Timer, Tv, Globe, Layers, Sparkles, Check, Star } from 'lucide-react';
 import { TierIcon } from '../ui/TierIcon';
 
 const plansData = {
   sigdef: {
     title: "Solo SIGDEF (Gestión)",
     subtitle: "Módulo Administrativo y Padrón Federativo",
-    color: "var(--verde-sig-light)",
-    cardClass: "", // Verde SIGDEF por defecto
+    color: "#10b981",
+    cardClass: "", 
     badgeClass: "",
+    checkClass: "icon-check-green",
+    btnFeaturedClass: "btn-acc-green",
+    btnOutlineClass: "btn-acc-outline",
     tiers: [
       {
         id: "sigdef-s",
@@ -19,7 +22,7 @@ const plansData = {
         annualPrice: "Anual: $480/año (~$40/mes)",
         featured: false,
         icon: LayoutDashboard,
-        color: "var(--verde-sig)",
+        color: "#10b981",
         features: [
           "Panel de Control Único (Admin Federación)",
           "Padrón Digital Básico de Afiliados",
@@ -39,7 +42,7 @@ const plansData = {
         annualPrice: "Anual: $1,150/año (~$96/mes)",
         featured: true,
         icon: Building2,
-        color: "var(--verde-sig-light)",
+        color: "#10b981",
         features: [
           "Todo lo del Plan Esencial",
           "Doble Dashboard (Federación + Clubes)",
@@ -58,8 +61,8 @@ const plansData = {
         period: "/mes",
         annualPrice: "Anual: $2,400/año (~$200/mes)",
         featured: false,
-        icon: Zap,
-        color: "var(--verde-sig-dark)",
+        icon: Star,
+        color: "#10b981",
         features: [
           "Todo lo del Plan Profesional",
           "App Móvil Dedicada (Android / iOS)",
@@ -75,9 +78,12 @@ const plansData = {
   sporttrack: {
     title: "Solo SportTrack (Eventos)",
     subtitle: "Módulo de Competencias, Tiempos y Resultados",
-    color: "var(--azul-st-light)",
+    color: "#0070f3",
     cardClass: "st-theme",
     badgeClass: "st-badge",
+    checkClass: "icon-check-blue",
+    btnFeaturedClass: "btn-acc-blue",
+    btnOutlineClass: "btn-acc-outline btn-acc-outline-blue",
     tiers: [
       {
         id: "st-s",
@@ -88,7 +94,7 @@ const plansData = {
         annualPrice: "Anual: $380/año (~$31/mes)",
         featured: false,
         icon: Timer,
-        color: "var(--azul-st-light)",
+        color: "#0070f3",
         features: [
           "Inscripción básica de atletas a regatas",
           "Pizarra de resultados en vivo (web pública)",
@@ -108,7 +114,7 @@ const plansData = {
         annualPrice: "Anual: $860/año (~$71/mes)",
         featured: true,
         icon: Tv,
-        color: "var(--azul-st)",
+        color: "#0070f3",
         features: [
           "Todo lo del Plan Esencial",
           "Resultados en vivo dinámicos mediante SignalR",
@@ -128,7 +134,7 @@ const plansData = {
         annualPrice: "Anual: $1,800/año (~$150/mes)",
         featured: false,
         icon: Globe,
-        color: "var(--azul-st-dark)",
+        color: "#0070f3",
         features: [
           "Todo lo del Plan Profesional",
           "Globo terráqueo 3D interactivo de eventos",
@@ -147,6 +153,9 @@ const plansData = {
     color: "#3daa94",
     cardClass: "duo-theme",
     badgeClass: "duo-badge",
+    checkClass: "icon-check-green", // Mezcla de ambos, usamos verde como base
+    btnFeaturedClass: "btn-acc-green",
+    btnOutlineClass: "btn-acc-outline",
     tiers: [
       {
         id: "duo-s",
@@ -157,7 +166,7 @@ const plansData = {
         annualPrice: "Anual: $720/año (~$60/mes)",
         featured: false,
         icon: Layers,
-        color: "var(--verde-sig)",
+        color: "#3daa94",
         features: [
           "Plataformas integradas (SIGDEF + SportTrack)",
           "Sincronización básica de padrón a regatas",
@@ -197,7 +206,7 @@ const plansData = {
         annualPrice: "Anual: $3,360/año (~$280/mes)",
         featured: false,
         icon: Zap,
-        color: "var(--azul-st-dark)",
+        color: "#3daa94",
         features: [
           "SIGDEF Premium + SportTrack Premium",
           "App Móvil Integrada (Legajo + Live Tracking)",
@@ -220,6 +229,7 @@ export function Servicios({ selectNivel }) {
   return (
     <section id="servicios" style={{ background: 'rgba(26, 48, 85, 0.08)', borderTop: '1px solid rgba(45,140,80,0.1)', borderBottom: '1px solid rgba(45,140,80,0.1)', padding: '5rem 0' }}>
       <div className="container">
+        
         {/* Encabezado */}
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '3rem', marginBottom: '0.75rem' }}>
@@ -271,8 +281,8 @@ export function Servicios({ selectNivel }) {
         </div>
 
         {/* Grilla de 3 tarjetas correspondientes al plan seleccionado */}
-        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-          <h3 style={{ fontSize: '1.6rem', fontWeight: 700, marginBottom: '0.25rem' }}>{currentPlan.title}</h3>
+        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+          <h3 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '0.25rem', color: '#ffffff' }}>{currentPlan.title}</h3>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{currentPlan.subtitle}</p>
         </div>
 
@@ -280,57 +290,91 @@ export function Servicios({ selectNivel }) {
           {currentPlan.tiers.map((tier) => {
             const isFeatured = tier.featured;
             const CardIcon = tier.icon;
+            
+            // Colores anuales de acento
+            const annualColor = selectedTab === 'sporttrack' ? '#0070f3' : selectedTab === 'duo' ? '#3daa94' : '#10b981';
+
             return (
               <div
                 key={tier.id}
                 className={`tier-card ${currentPlan.cardClass} ${isFeatured ? 'featured' : ''}`}
-                style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+                style={{ 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  justifyContent: 'space-between',
+                  borderRadius: '24px',
+                  backgroundColor: 'rgba(17, 24, 39, 0.45)',
+                  border: isFeatured 
+                    ? `2px solid ${currentPlan.color}` 
+                    : '1px solid rgba(255, 255, 255, 0.06)',
+                  padding: '3rem 2.25rem'
+                }}
               >
                 {isFeatured && (
-                  <div className={`tier-badge ${currentPlan.badgeClass}`}>
+                  <div className={`plan-badge`} style={{ backgroundColor: currentPlan.color }}>
                     Más Popular
                   </div>
                 )}
                 
-                <div style={{ marginTop: isFeatured ? '0.75rem' : '0' }}>
-                  <TierIcon icon={CardIcon} color={tier.color} />
-                  <h3 style={{ fontSize: '1.6rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'flex-start' }}>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <div className="plan-icon-wrapper" style={{
+                    width: '48px',
+                    height: '48px',
+                    borderRadius: '12px',
+                    backgroundColor: isFeatured ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: isFeatured ? currentPlan.color : '#94a3b8',
+                    marginBottom: '1rem'
+                  }}>
+                    <CardIcon size={24} />
+                  </div>
+
+                  <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#ffffff', margin: 0, textAlign: 'left' }}>
                     {tier.name}
                   </h3>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block', textAlign: 'left', marginTop: '0.2rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <span style={{ fontSize: '0.75rem', color: '#64748b', display: 'block', textAlign: 'left', marginTop: '0.3rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                     {tier.limit}
                   </span>
 
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.25rem', margin: '1.5rem 0 0.5rem', justifyContent: 'flex-start' }}>
-                    <span style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text-main)' }}>{tier.price}</span>
-                    <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{tier.period}</span>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.25rem', margin: '1.25rem 0 0.25rem', justifyContent: 'flex-start' }}>
+                    <span style={{ fontSize: '2.6rem', fontWeight: 850, color: '#ffffff', lineHeight: 1 }}>{tier.price}</span>
+                    <span style={{ fontSize: '1rem', color: '#64748b', fontWeight: 500 }}>{tier.period}</span>
                   </div>
-                  <span style={{ fontSize: '0.78rem', color: 'var(--text-accent)', display: 'block', textAlign: 'left', fontWeight: 500, marginBottom: '1.5rem', filter: selectedTab === 'sporttrack' ? 'hue-rotate(160deg)' : undefined }}>
+                  
+                  <span style={{ 
+                    fontSize: '0.825rem', 
+                    color: annualColor, 
+                    display: 'block', 
+                    textAlign: 'left', 
+                    fontWeight: 600, 
+                    marginBottom: '1.5rem' 
+                  }}>
                     {tier.annualPrice}
                   </span>
 
-                  <ul className="feature-list">
+                  <ul className="feature-list" style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                     {tier.features.map((feat, idx) => (
-                      <li key={idx} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+                      <li key={idx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', color: '#cbd5e1', fontSize: '0.9rem', marginBottom: 0 }}>
+                        <Check size={16} className={currentPlan.checkClass} />
                         {feat}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div style={{ marginTop: '1.5rem' }}>
+                <div style={{ marginTop: '2rem' }}>
                   <button
                     onClick={() => selectNivel(`${selectedTab === 'duo' ? 'Pack Dúo' : selectedTab === 'sporttrack' ? 'Solo SportTrack' : 'Solo SIGDEF'} - ${tier.name}`)}
-                    className={isFeatured ? "btn-primary" : "btn-secondary"}
+                    className={isFeatured ? currentPlan.btnFeaturedClass : currentPlan.btnOutlineClass}
                     style={{
                       width: '100%',
-                      textAlign: 'center',
-                      cursor: 'pointer',
-                      border: isFeatured ? 'none' : '1px solid rgba(255,255,255,0.12)',
-                      background: isFeatured ? (selectedTab === 'sporttrack' ? 'var(--gradient-st)' : selectedTab === 'duo' ? 'var(--gradient-joint)' : undefined) : undefined
+                      margin: 0
                     }}
                   >
-                    Consultar {tier.name.split(' ')[0]}
+                    Consultar Plan
                   </button>
                 </div>
               </div>
