@@ -66,7 +66,7 @@ export function AppMovil() {
               {/* Header */}
               <div style={{ marginBottom: '1rem' }}>
                 <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--verde-sig)', marginBottom: '0.2rem' }}>Bienvenido,</div>
-                <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.2 }}>Ezequiel Di Giacomo</div>
+                <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.2 }}>Juan Pérez</div>
                 <div style={{ fontSize: '0.6rem', color: 'var(--text-muted)', marginTop: '0.3rem' }}>Panel de control de Federacion Argentina de Canoas</div>
               </div>
 

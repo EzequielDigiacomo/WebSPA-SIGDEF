@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Hero } from './components/sections/Hero';
+import { Sistemas } from './components/sections/Sistemas';
 import { Servicios } from './components/sections/Servicios';
 import { AppMovil } from './components/sections/AppMovil';
 import { Arquitectura } from './components/sections/Arquitectura';
@@ -27,7 +28,10 @@ function App() {
       {/* ── HERO ── */}
       <Hero />
 
-      {/* ── NIVELES DE SERVICIO ── */}
+      {/* ── RESUMEN DE LOS SISTEMAS ── */}
+      <Sistemas />
+
+      {/* ── NIVELES DE SERVICIO / PLANES ── */}
       <Servicios selectNivel={selectNivel} />
 
       {/* ── APP MÓVIL / MULTIPLATAFORMA ── */}

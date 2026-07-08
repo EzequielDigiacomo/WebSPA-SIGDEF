@@ -6,15 +6,26 @@ export function Footer() {
     <footer style={{ borderTop: '1px solid rgba(45, 140, 80, 0.15)', background: 'rgba(13, 22, 36, 0.8)', paddingTop: '4rem', paddingBottom: '2rem' }}>
       <div className="container footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1.5fr', gap: '3rem', marginBottom: '3rem', textAlign: 'left' }}>
         <div>
-          <SigdefLogo size="sm" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <SigdefLogo size="sm" />
+            <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', borderLeft: '1px solid rgba(255,255,255,0.15)', paddingLeft: '0.75rem' }}>
+              <span style={{ color: 'var(--verde-sig-light)' }}>&</span> SportTrack
+            </span>
+          </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '1.25rem', lineHeight: 1.7, maxWidth: '280px' }}>
-            Líderes en transformación digital para entidades deportivas en Argentina y Latinoamérica.
+            Líderes en transformación digital y cronometraje en vivo para entidades deportivas en Argentina y Latinoamérica.
           </p>
         </div>
         <div>
           <h4 style={{ marginBottom: '1.25rem', fontSize: '0.95rem' }}>Navegación</h4>
           <div style={{ display: 'grid', gap: '0.65rem', fontSize: '0.875rem' }}>
-            {[['Inicio', '#'], ['Niveles', '#niveles'], ['Arquitectura', '#arquitectura'], ['Contacto', '#contacto']].map(([label, href]) => (
+            {[
+              ['Inicio', '#'],
+              ['Sistemas', '#sistemas'],
+              ['Planes', '#servicios'],
+              ['Tecnología', '#arquitectura'],
+              ['Contacto', '#contacto']
+            ].map(([label, href]) => (
               <a key={label} href={href} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>{label}</a>
             ))}
           </div>
@@ -41,10 +52,10 @@ export function Footer() {
 
       <div className="container" style={{ borderTop: '1px solid rgba(45, 140, 80, 0.1)', paddingTop: '1.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.825rem' }}>
-          © 2026 SIGDEF · Sistema de Gestión Deportiva Federativa · Todos los derechos reservados
+          © 2026 SIGDEF & SportTrack · Ecosistema Deportivo Integral · Todos los derechos reservados
         </p>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.825rem' }}>
-          Creado por <span style={{ color: 'var(--verde-sig)', fontWeight: 600 }}>Ezequiel Di Giacomo</span> · www.sigdef.com.ar
+          Tecnología aplicada al rendimiento y la administración deportiva · <span style={{ color: 'var(--verde-sig-light)', fontWeight: 600 }}>www.sigdef.com.ar</span>
         </p>
       </div>
     </footer>

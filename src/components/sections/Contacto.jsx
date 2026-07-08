@@ -70,8 +70,12 @@ export function Contacto({ nivelInteres, setNivelInteres }) {
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem',
-                  background: nivelInteres ? 'rgba(45, 140, 80, 0.12)' : 'rgba(26, 48, 85, 0.2)',
-                  border: nivelInteres ? '1px solid var(--verde-sig)' : '1px solid var(--border-navy)',
+                  background: nivelInteres
+                    ? (nivelInteres.includes('SportTrack') ? 'rgba(0, 112, 243, 0.1)' : nivelInteres.includes('Dúo') ? 'rgba(61, 170, 148, 0.1)' : 'rgba(45, 140, 80, 0.12)')
+                    : 'rgba(26, 48, 85, 0.2)',
+                  border: nivelInteres
+                    ? (nivelInteres.includes('SportTrack') ? '1px solid var(--azul-st)' : nivelInteres.includes('Dúo') ? '1px solid #3daa94' : '1px solid var(--verde-sig)')
+                    : '1px solid var(--border-navy)',
                   borderRadius: '0.75rem',
                   color: nivelInteres ? 'var(--text-main)' : 'var(--text-muted)',
                   fontFamily: 'var(--font-sans)',
@@ -85,10 +89,22 @@ export function Contacto({ nivelInteres, setNivelInteres }) {
                   backgroundPosition: 'right 1rem center',
                 }}
               >
-                <option value="" style={{ background: 'var(--bg-primary)', color: 'var(--text-muted)' }}>Seleccioná un nivel...</option>
-                <option value="Base" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>🟢 SIGDEF Base — El Padrón Digital</option>
-                <option value="Standard" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>⭐ SIGDEF Standard — Gestión Institucional</option>
-                <option value="Premium" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>⚡ SIGDEF Premium — El Ecosistema Conectado</option>
+                <option value="" style={{ background: 'var(--bg-primary)', color: 'var(--text-muted)' }}>Seleccioná un plan...</option>
+                <optgroup label="🎁 Pack Dúo (Ecosistema Integrado)" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)', fontWeight: 600 }}>
+                  <option value="Pack Dúo - Plan Esencial" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>Pack Dúo — Plan Esencial (Hasta 500 atletas)</option>
+                  <option value="Pack Dúo - Plan Profesional" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>Pack Dúo — Plan Profesional (501 a 2,000 atletas)</option>
+                  <option value="Pack Dúo - Plan Ecosistema" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>Pack Dúo — Plan Ecosistema (Más de 2,000 atletas)</option>
+                </optgroup>
+                <optgroup label="🟢 Solo SIGDEF (Gestión)" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)', fontWeight: 600 }}>
+                  <option value="Solo SIGDEF - Plan Esencial" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>Solo SIGDEF — Plan Esencial (Hasta 500 atletas)</option>
+                  <option value="Solo SIGDEF - Plan Profesional" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>Solo SIGDEF — Plan Profesional (501 a 2,000 atletas)</option>
+                  <option value="Solo SIGDEF - Plan Ecosistema" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>Solo SIGDEF — Plan Ecosistema (Más de 2,000 atletas)</option>
+                </optgroup>
+                <optgroup label="🔵 Solo SportTrack (Competencias)" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)', fontWeight: 600 }}>
+                  <option value="Solo SportTrack - Plan Esencial" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>Solo SportTrack — Plan Esencial (Hasta 500 atletas)</option>
+                  <option value="Solo SportTrack - Plan Profesional" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>Solo SportTrack — Plan Profesional (501 a 2,000 atletas)</option>
+                  <option value="Solo SportTrack - Plan Ecosistema" style={{ background: 'var(--bg-primary)', color: 'var(--text-main)' }}>Solo SportTrack — Plan Ecosistema (Más de 2,000 atletas)</option>
+                </optgroup>
               </select>
               <label htmlFor="contact-mensaje">Mensaje</label>
               <textarea id="contact-mensaje" rows={3} placeholder="Contanos cómo podemos ayudarte a crear tu software acorde a tus necesidades"></textarea>
