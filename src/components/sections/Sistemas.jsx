@@ -163,7 +163,7 @@ export function Sistemas() {
               <a href="#servicios" className="btn-acc-outline btn-acc-outline-blue" style={{ padding: '0.65rem 1.75rem !important', fontSize: '0.85rem' }}>
                 Ver Planes &nbsp; &rsaquo;
               </a>
-              <a href="https://oficialsporttrack.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-acc-blue" style={{ padding: '0.65rem 1.75rem !important', fontSize: '0.85rem' }}>
+              <a href="https://sporttrack.pro/" target="_blank" rel="noopener noreferrer" className="btn-acc-blue" style={{ padding: '0.65rem 1.75rem !important', fontSize: '0.85rem' }}>
                 Acceder a SportTrack
               </a>
             </div>

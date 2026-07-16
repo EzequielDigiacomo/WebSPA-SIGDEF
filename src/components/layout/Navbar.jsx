@@ -23,9 +23,9 @@ export function Navbar() {
         <a href="#arquitectura" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 500, fontSize: '0.9rem', transition: 'var(--transition)' }}
           onMouseEnter={e => e.target.style.color = 'var(--verde-sig-light)'} onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}>Tecnología</a>
         <span style={{ height: '1.5rem', width: '1px', background: 'rgba(255,255,255,0.1)' }} className="logo-full" />
-        <a href="https://sigdef.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 600, fontSize: '0.82rem', border: '1px solid rgba(45, 140, 80, 0.3)', padding: '0.35rem 0.75rem', borderRadius: '0.5rem', transition: 'var(--transition)' }} className="logo-full"
+        <a href="https://sigdef.vercel.app" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 600, fontSize: '0.82rem', border: '1px solid rgba(45, 140, 80, 0.3)', padding: '0.35rem 0.75rem', borderRadius: '0.5rem', transition: 'var(--transition)' }} className="logo-full"
           onMouseEnter={e => e.target.style.borderColor = 'var(--verde-sig-light)'} onMouseLeave={e => e.target.style.borderColor = 'rgba(45, 140, 80, 0.3)'}>Ingresar SIGDEF</a>
-        <a href="https://oficialsporttrack.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 600, fontSize: '0.82rem', border: '1px solid rgba(0, 112, 243, 0.3)', padding: '0.35rem 0.75rem', borderRadius: '0.5rem', transition: 'var(--transition)' }} className="logo-full"
+        <a href="https://sporttrack.pro" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 600, fontSize: '0.82rem', border: '1px solid rgba(0, 112, 243, 0.3)', padding: '0.35rem 0.75rem', borderRadius: '0.5rem', transition: 'var(--transition)' }} className="logo-full"
           onMouseEnter={e => e.target.style.borderColor = 'var(--azul-st-light)'} onMouseLeave={e => e.target.style.borderColor = 'rgba(0, 112, 243, 0.3)'}>Ingresar SportTrack</a>
         <a href="#contacto" className="btn-primary" style={{ padding: '0.55rem 1.25rem', textDecoration: 'none', fontSize: '0.85rem' }}>Contacto</a>
       </div>
