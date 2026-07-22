@@ -227,22 +227,22 @@ export function Servicios({ selectNivel }) {
   const currentPlan = plansData[selectedTab];
 
   return (
-    <section id="servicios" style={{ background: 'rgba(26, 48, 85, 0.08)', borderTop: '1px solid rgba(45,140,80,0.1)', borderBottom: '1px solid rgba(45,140,80,0.1)', padding: '5rem 0' }}>
+    <section id="servicios" style={{ background: 'rgba(26, 48, 85, 0.08)', borderTop: '1px solid rgba(45,140,80,0.1)', borderBottom: '1px solid rgba(45,140,80,0.1)', padding: '3.5rem 0' }}>
       <div className="container">
         
         {/* Encabezado */}
-        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '3rem', marginBottom: '0.75rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
+          <h2 style={{ fontSize: '2.25rem', marginBottom: '0.5rem' }}>
             Nuestros <span className="gradient-text-joint">Planes de Servicio</span>
           </h2>
-          <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto', fontSize: '1.05rem' }}>
+          <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto', fontSize: '0.95rem' }}>
             Seleccione el esquema que mejor se adapte al volumen y necesidades de su federación. Escale de plan cuando su institución lo requiera.
           </p>
           <div className="section-divider" />
         </div>
 
         {/* Selector de pestañas */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '4rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.65rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
           {Object.entries(plansData).map(([key, value]) => {
             const isSelected = selectedTab === key;
             let activeBg = 'linear-gradient(135deg, var(--verde-sig), var(--verde-sig-light))';
@@ -256,13 +256,13 @@ export function Servicios({ selectNivel }) {
                 key={key}
                 onClick={() => setSelectedTab(key)}
                 style={{
-                  padding: '0.8rem 1.8rem',
+                  padding: '0.55rem 1.15rem',
                   borderRadius: '9999px',
                   border: '1px solid ' + (isSelected ? 'transparent' : 'rgba(255,255,255,0.08)'),
                   background: isSelected ? activeBg : 'rgba(26, 48, 85, 0.25)',
                   color: isSelected ? 'white' : 'var(--text-muted)',
                   fontWeight: 600,
-                  fontSize: '0.95rem',
+                  fontSize: '0.82rem',
                   cursor: 'pointer',
                   transition: 'var(--transition)',
                   boxShadow: isSelected ? '0 8px 24px rgba(0,0,0,0.2)' : 'none',
@@ -281,12 +281,12 @@ export function Servicios({ selectNivel }) {
         </div>
 
         {/* Grilla de 3 tarjetas correspondientes al plan seleccionado */}
-        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <h3 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '0.25rem', color: '#ffffff' }}>{currentPlan.title}</h3>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{currentPlan.subtitle}</p>
+        <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
+          <h3 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '0.15rem', color: '#ffffff' }}>{currentPlan.title}</h3>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem' }}>{currentPlan.subtitle}</p>
         </div>
 
-        <div className="grid-3">
+        <div className="grid-3 plans-grid">
           {currentPlan.tiers.map((tier) => {
             const isFeatured = tier.featured;
             const CardIcon = tier.icon;
@@ -297,17 +297,11 @@ export function Servicios({ selectNivel }) {
             return (
               <div
                 key={tier.id}
-                className={`tier-card ${currentPlan.cardClass} ${isFeatured ? 'featured' : ''}`}
+                className={`tier-card plans-card ${currentPlan.cardClass} ${isFeatured ? 'featured' : ''}`}
                 style={{ 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  justifyContent: 'space-between',
-                  borderRadius: '24px',
-                  backgroundColor: 'rgba(17, 24, 39, 0.45)',
                   border: isFeatured 
                     ? `2px solid ${currentPlan.color}` 
                     : '1px solid rgba(255, 255, 255, 0.06)',
-                  padding: '3rem 2.25rem'
                 }}
               >
                 {isFeatured && (
@@ -316,62 +310,44 @@ export function Servicios({ selectNivel }) {
                   </div>
                 )}
                 
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className="plans-card-body">
                   <div className="plan-icon-wrapper" style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '12px',
-                    backgroundColor: isFeatured ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
                     color: isFeatured ? currentPlan.color : '#94a3b8',
-                    marginBottom: '1rem'
                   }}>
-                    <CardIcon size={24} />
+                    <CardIcon size={18} />
                   </div>
 
-                  <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#ffffff', margin: 0, textAlign: 'left' }}>
-                    {tier.name}
-                  </h3>
-                  <span style={{ fontSize: '0.75rem', color: '#64748b', display: 'block', textAlign: 'left', marginTop: '0.3rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                    {tier.limit}
-                  </span>
+                  <h3 className="plans-card-title">{tier.name}</h3>
+                  <span className="plans-card-limit">{tier.limit}</span>
 
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.25rem', margin: '1.25rem 0 0.25rem', justifyContent: 'flex-start' }}>
-                    <span style={{ fontSize: '2.6rem', fontWeight: 850, color: '#ffffff', lineHeight: 1 }}>{tier.price}</span>
-                    <span style={{ fontSize: '1rem', color: '#64748b', fontWeight: 500 }}>{tier.period}</span>
+                  <div className="plans-card-price">
+                    <span className="plans-price-value">{tier.price}</span>
+                    <span className="plans-price-period">{tier.period}</span>
                   </div>
                   
-                  <span style={{ 
-                    fontSize: '0.825rem', 
-                    color: annualColor, 
-                    display: 'block', 
-                    textAlign: 'left', 
-                    fontWeight: 600, 
-                    marginBottom: '1.5rem' 
-                  }}>
+                  <span className="plans-card-annual" style={{ color: annualColor }}>
                     {tier.annualPrice}
                   </span>
 
-                  <ul className="feature-list" style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                  <ul className="feature-list plans-feature-list">
                     {tier.features.map((feat, idx) => (
-                      <li key={idx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', color: '#cbd5e1', fontSize: '0.9rem', marginBottom: 0 }}>
-                        <Check size={16} className={currentPlan.checkClass} />
-                        {feat}
+                      <li key={idx}>
+                        <Check size={14} className={currentPlan.checkClass} />
+                        <span>{feat}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div style={{ marginTop: '2rem' }}>
+                <div className="plans-card-cta">
                   <button
                     onClick={() => selectNivel(`${selectedTab === 'duo' ? 'Pack Dúo' : selectedTab === 'sporttrack' ? 'Solo SportTrack' : 'Solo SIGDEF'} - ${tier.name}`)}
                     className={isFeatured ? currentPlan.btnFeaturedClass : currentPlan.btnOutlineClass}
                     style={{
                       width: '100%',
-                      margin: 0
+                      margin: 0,
+                      padding: '0.55rem 1rem !important',
+                      fontSize: '0.85rem',
                     }}
                   >
                     Consultar Plan

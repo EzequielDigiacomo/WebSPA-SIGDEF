@@ -55,7 +55,7 @@ export function Contacto({ nivelInteres, setNivelInteres }) {
               
               <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
                 <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>Email</div>
-                <div style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>info@sigdef.com.ar</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>info@dgotech.org</div>
               </div>
               
               <div style={{ textAlign: 'left' }}>
@@ -65,12 +65,12 @@ export function Contacto({ nivelInteres, setNivelInteres }) {
             </div>
 
             <div style={{ display: 'flex', gap: '0.75rem' }}>
-              <a href="https://wa.me/5493412280901?text=Hola%20SIGDEF%2C%20quiero%20conocer%20más%20sobre%20sus%20servicios"
+              <a href="https://wa.me/5493412280901?text=Hola%20DgoTech%2C%20quiero%20conocer%20más%20sobre%20SIGDEF%20y%20SportTrack"
                 target="_blank" rel="noopener noreferrer"
                 className="btn-acc-green" style={{ flex: 1, padding: '0.75rem 1rem !important', fontSize: '0.925rem' }}>
                 <MessageSquare size={16} /> WhatsApp
               </a>
-              <a href="mailto:info@sigdef.com.ar"
+              <a href="mailto:info@dgotech.org"
                 className="btn-acc-outline" style={{ flex: 1, padding: '0.75rem 1rem !important', fontSize: '0.925rem' }}>
                 <Mail size={16} /> Email
               </a>
@@ -111,7 +111,7 @@ export function Contacto({ nivelInteres, setNivelInteres }) {
             </h4>
             
             <form onSubmit={(e) => { e.preventDefault(); alert('¡Mensaje enviado! Nos contactaremos pronto.'); }} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="contact-form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <label htmlFor="contact-nombre" style={{ color: '#cbd5e1', fontWeight: 600, fontSize: '0.85rem' }}>Nombre</label>
                   <input id="contact-nombre" type="text" placeholder="Tu nombre" required className="contact-input-dark" style={{ marginBottom: 0 }} />

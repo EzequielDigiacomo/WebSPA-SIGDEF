@@ -10,7 +10,7 @@ export function Footer() {
             <SigdefLogo size="lg" />
           </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '1.25rem', lineHeight: 1.7, maxWidth: '280px' }}>
-            Líderes en transformación digital y cronometraje en vivo para entidades deportivas en Argentina y Latinoamérica.
+            DgoTech: transformación digital y cronometraje en vivo para entidades deportivas en Argentina y Latinoamérica.
           </p>
         </div>
         <div>
@@ -49,10 +49,11 @@ export function Footer() {
 
       <div className="container" style={{ borderTop: '1px solid rgba(45, 140, 80, 0.1)', paddingTop: '1.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.825rem' }}>
-          © 2026 SIGDEF & SportTrack · Ecosistema Deportivo Integral · Todos los derechos reservados
+          © 2026 DgoTech · SIGDEF & SportTrack · Todos los derechos reservados
         </p>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.825rem' }}>
-          Tecnología aplicada al rendimiento y la administración deportiva · <span style={{ color: 'var(--verde-sig-light)', fontWeight: 600 }}>www.sigdef.com.ar</span>
+          Tecnología aplicada al rendimiento y la administración deportiva ·{' '}
+          <a href="https://dgotech.org" style={{ color: 'var(--verde-sig-light)', fontWeight: 600, textDecoration: 'none' }}>dgotech.org</a>
         </p>
       </div>
     </footer>
