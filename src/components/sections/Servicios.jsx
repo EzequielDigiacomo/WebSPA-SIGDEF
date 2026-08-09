@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LayoutDashboard, Building2, Zap, Timer, Tv, Globe, Layers, Sparkles, Check, Star } from 'lucide-react';
-import { TierIcon } from '../ui/TierIcon';
+import { applyCatalogPrices, fetchPlanesCatalog } from '../../services/plansCatalog';
 
-const plansData = {
+const plansDataBase = {
   sigdef: {
     title: "Solo SIGDEF (Gestión)",
     subtitle: "Módulo Administrativo y Padrón Federativo",
@@ -16,10 +16,10 @@ const plansData = {
       {
         id: "sigdef-s",
         name: "Plan Esencial",
-        limit: "Hasta 500 atletas activos",
+        limit: "Hasta 200 atletas activos",
         price: "$50",
         period: "/mes",
-        annualPrice: "Anual: $480/año (~$40/mes)",
+        annualPrice: "Anual: $500/año",
         featured: false,
         icon: LayoutDashboard,
         color: "#10b981",
@@ -36,10 +36,10 @@ const plansData = {
       {
         id: "sigdef-m",
         name: "Plan Profesional",
-        limit: "501 a 2,000 atletas activos",
+        limit: "Hasta 400 atletas activos",
         price: "$120",
         period: "/mes",
-        annualPrice: "Anual: $1,150/año (~$96/mes)",
+        annualPrice: "Anual: $1,200/año",
         featured: true,
         icon: Building2,
         color: "#10b981",
@@ -56,10 +56,10 @@ const plansData = {
       {
         id: "sigdef-l",
         name: "Plan Ecosistema",
-        limit: "Más de 2,000 atletas activos",
+        limit: "Atletas ilimitados",
         price: "$250",
         period: "/mes",
-        annualPrice: "Anual: $2,400/año (~$200/mes)",
+        annualPrice: "Anual: $2,500/año",
         featured: false,
         icon: Star,
         color: "#10b981",
@@ -88,10 +88,10 @@ const plansData = {
       {
         id: "st-s",
         name: "Plan Esencial",
-        limit: "Hasta 500 atletas activos",
+        limit: "Hasta 200 atletas activos",
         price: "$40",
         period: "/mes",
-        annualPrice: "Anual: $380/año (~$31/mes)",
+        annualPrice: "Anual: $400/año",
         featured: false,
         icon: Timer,
         color: "#0070f3",
@@ -108,10 +108,10 @@ const plansData = {
       {
         id: "st-m",
         name: "Plan Profesional",
-        limit: "501 a 2,000 atletas activos",
+        limit: "Hasta 400 atletas activos",
         price: "$90",
         period: "/mes",
-        annualPrice: "Anual: $860/año (~$71/mes)",
+        annualPrice: "Anual: $900/año",
         featured: true,
         icon: Tv,
         color: "#0070f3",
@@ -128,10 +128,10 @@ const plansData = {
       {
         id: "st-l",
         name: "Plan Ecosistema",
-        limit: "Más de 2,000 atletas activos",
+        limit: "Atletas ilimitados",
         price: "$190",
         period: "/mes",
-        annualPrice: "Anual: $1,800/año (~$150/mes)",
+        annualPrice: "Anual: $1,900/año",
         featured: false,
         icon: Globe,
         color: "#0070f3",
@@ -149,21 +149,21 @@ const plansData = {
   },
   duo: {
     title: "Pack Dúo (Ecosistema)",
-    subtitle: "SIGDEF + SportTrack Integrados (Ahorro del 20%)",
+    subtitle: "SIGDEF + SportTrack Integrados",
     color: "#3daa94",
     cardClass: "duo-theme",
     badgeClass: "duo-badge",
-    checkClass: "icon-check-green", // Mezcla de ambos, usamos verde como base
+    checkClass: "icon-check-green",
     btnFeaturedClass: "btn-acc-green",
     btnOutlineClass: "btn-acc-outline",
     tiers: [
       {
         id: "duo-s",
         name: "Plan Esencial",
-        limit: "Hasta 500 atletas activos",
+        limit: "Hasta 200 atletas activos",
         price: "$75",
         period: "/mes",
-        annualPrice: "Anual: $720/año (~$60/mes)",
+        annualPrice: "Anual: $750/año",
         featured: false,
         icon: Layers,
         color: "#3daa94",
@@ -180,10 +180,10 @@ const plansData = {
       {
         id: "duo-m",
         name: "Plan Profesional",
-        limit: "501 a 2,000 atletas activos",
+        limit: "Hasta 400 atletas activos",
         price: "$170",
         period: "/mes",
-        annualPrice: "Anual: $1,600/año (~$133/mes)",
+        annualPrice: "Anual: $1,700/año",
         featured: true,
         icon: Sparkles,
         color: "#3daa94",
@@ -200,10 +200,10 @@ const plansData = {
       {
         id: "duo-l",
         name: "Plan Ecosistema",
-        limit: "Más de 2,000 atletas activos",
+        limit: "Atletas ilimitados",
         price: "$350",
         period: "/mes",
-        annualPrice: "Anual: $3,360/año (~$280/mes)",
+        annualPrice: "Anual: $3,500/año",
         featured: false,
         icon: Zap,
         color: "#3daa94",
@@ -222,7 +222,20 @@ const plansData = {
 };
 
 export function Servicios({ selectNivel }) {
-  const [selectedTab, setSelectedTab] = useState('duo'); // Dúo recomendado por defecto
+  const [selectedTab, setSelectedTab] = useState('duo');
+  const [plansData, setPlansData] = useState(plansDataBase);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchPlanesCatalog()
+      .then((planes) => {
+        if (!cancelled) setPlansData(applyCatalogPrices(plansDataBase, planes));
+      })
+      .catch((err) => {
+        console.warn('No se pudieron cargar precios del catálogo; se usan valores locales.', err);
+      });
+    return () => { cancelled = true; };
+  }, []);
 
   const currentPlan = plansData[selectedTab];
 
@@ -230,7 +243,6 @@ export function Servicios({ selectNivel }) {
     <section id="servicios" style={{ background: 'rgba(26, 48, 85, 0.08)', borderTop: '1px solid rgba(45,140,80,0.1)', borderBottom: '1px solid rgba(45,140,80,0.1)', padding: '3.5rem 0' }}>
       <div className="container">
         
-        {/* Encabezado */}
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <h2 style={{ fontSize: '2.25rem', marginBottom: '0.5rem' }}>
             Nuestros <span className="gradient-text-joint">Planes de Servicio</span>
@@ -241,7 +253,6 @@ export function Servicios({ selectNivel }) {
           <div className="section-divider" />
         </div>
 
-        {/* Selector de pestañas */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '0.65rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
           {Object.entries(plansData).map(([key, value]) => {
             const isSelected = selectedTab === key;
@@ -280,7 +291,6 @@ export function Servicios({ selectNivel }) {
           })}
         </div>
 
-        {/* Grilla de 3 tarjetas correspondientes al plan seleccionado */}
         <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
           <h3 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '0.15rem', color: '#ffffff' }}>{currentPlan.title}</h3>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem' }}>{currentPlan.subtitle}</p>
@@ -290,8 +300,6 @@ export function Servicios({ selectNivel }) {
           {currentPlan.tiers.map((tier) => {
             const isFeatured = tier.featured;
             const CardIcon = tier.icon;
-            
-            // Colores anuales de acento
             const annualColor = selectedTab === 'sporttrack' ? '#0070f3' : selectedTab === 'duo' ? '#3daa94' : '#10b981';
 
             return (
