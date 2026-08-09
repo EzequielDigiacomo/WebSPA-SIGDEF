@@ -27,7 +27,7 @@ export function Contacto({ nivelInteres, setNivelInteres }) {
 
               <div className="contacto-field">
                 <div className="contacto-label">Email</div>
-                <div className="contacto-value">info@dgotech.org</div>
+                <div className="contacto-value">dgotech13@gmail.com</div>
               </div>
 
               <div className="contacto-field">
