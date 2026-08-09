@@ -35,7 +35,7 @@ function App() {
       <Servicios selectNivel={selectNivel} />
 
       {/* ── APP MÓVIL / MULTIPLATAFORMA ── */}
-      <AppMovil />
+      {/* <AppMovil /> */}
 
       {/* ── ARQUITECTURA ESCALABLE ── */}
       <Arquitectura />
