@@ -1,225 +1,7 @@
 import { useState, useEffect } from 'react';
-import { LayoutDashboard, Building2, Zap, Timer, Tv, Globe, Layers, Sparkles, Check, Star } from 'lucide-react';
 import { applyCatalogPrices, fetchPlanesCatalog } from '../../services/plansCatalog';
-
-const plansDataBase = {
-  sigdef: {
-    title: "Solo SIGDEF (Gestión)",
-    subtitle: "Módulo Administrativo y Padrón Federativo",
-    color: "#10b981",
-    cardClass: "", 
-    badgeClass: "",
-    checkClass: "icon-check-green",
-    btnFeaturedClass: "btn-acc-green",
-    btnOutlineClass: "btn-acc-outline",
-    tiers: [
-      {
-        id: "sigdef-s",
-        name: "Plan Esencial",
-        limit: "Hasta 200 atletas activos",
-        price: "$50",
-        period: "/mes",
-        annualPrice: "Anual: $500/año",
-        featured: false,
-        icon: LayoutDashboard,
-        color: "#10b981",
-        features: [
-          "Panel de Control Único (Admin Federación)",
-          "Padrón Digital Básico de Afiliados",
-          "Categorización por edad automática",
-          "Legajo de Datos Personales (DNI, Pasaporte)",
-          "Validación básica de documentación interna",
-          "Módulo de tutoría legal para atletas menores",
-          "Exportación de planillas a Excel"
-        ]
-      },
-      {
-        id: "sigdef-m",
-        name: "Plan Profesional",
-        limit: "Hasta 400 atletas activos",
-        price: "$120",
-        period: "/mes",
-        annualPrice: "Anual: $1,200/año",
-        featured: true,
-        icon: Building2,
-        color: "#10b981",
-        features: [
-          "Todo lo del Plan Esencial",
-          "Doble Dashboard (Federación + Clubes)",
-          "Carga descentralizada desde cada Club",
-          "Flujo de Aprobación Remota en tiempo real",
-          "Gestión avanzada de fotos y legajos médicos",
-          "Módulo de matrícula y control de afiliación",
-          "Filtros avanzados por club, pago y vigencia"
-        ]
-      },
-      {
-        id: "sigdef-l",
-        name: "Plan Ecosistema",
-        limit: "Atletas ilimitados",
-        price: "$250",
-        period: "/mes",
-        annualPrice: "Anual: $2,500/año",
-        featured: false,
-        icon: Star,
-        color: "#10b981",
-        features: [
-          "Todo lo del Plan Profesional",
-          "App Móvil Dedicada (Android / iOS)",
-          "Mensajería interna oficial Federación-Clubes",
-          "Centro de Notificaciones masivas con acuse",
-          "Auditoría completa de logs y seguridad",
-          "Resoluciones y circulares oficiales digitales",
-          "Soporte multimedia de alta resolución"
-        ]
-      }
-    ]
-  },
-  sporttrack: {
-    title: "Solo SportTrack (Eventos)",
-    subtitle: "Módulo de Competencias, Tiempos y Resultados",
-    color: "#0070f3",
-    cardClass: "st-theme",
-    badgeClass: "st-badge",
-    checkClass: "icon-check-blue",
-    btnFeaturedClass: "btn-acc-blue",
-    btnOutlineClass: "btn-acc-outline btn-acc-outline-blue",
-    tiers: [
-      {
-        id: "st-s",
-        name: "Plan Esencial",
-        limit: "Hasta 200 atletas activos",
-        price: "$40",
-        period: "/mes",
-        annualPrice: "Anual: $400/año",
-        featured: false,
-        icon: Timer,
-        color: "#0070f3",
-        features: [
-          "Inscripción básica de atletas a regatas",
-          "Pizarra de resultados en vivo (web pública)",
-          "Consola para Juez Cronometrista",
-          "Planillas de clasificación y series",
-          "Soporte para 1 disciplina deportiva",
-          "Reporte PDF automático de regatas",
-          "Gráficos básicos de rendimiento"
-        ]
-      },
-      {
-        id: "st-m",
-        name: "Plan Profesional",
-        limit: "Hasta 400 atletas activos",
-        price: "$90",
-        period: "/mes",
-        annualPrice: "Anual: $900/año",
-        featured: true,
-        icon: Tv,
-        color: "#0070f3",
-        features: [
-          "Todo lo del Plan Esencial",
-          "Resultados en vivo dinámicos mediante SignalR",
-          "Múltiples consolas de jueces (Largada + Llegada)",
-          "Inscripción descentralizada directa por Clubes",
-          "Control de penalidades y descalificaciones",
-          "Cronograma interactivo de pruebas",
-          "Filtros avanzados por series y categorías"
-        ]
-      },
-      {
-        id: "st-l",
-        name: "Plan Ecosistema",
-        limit: "Atletas ilimitados",
-        price: "$190",
-        period: "/mes",
-        annualPrice: "Anual: $1,900/año",
-        featured: false,
-        icon: Globe,
-        color: "#0070f3",
-        features: [
-          "Todo lo del Plan Profesional",
-          "Globo terráqueo 3D interactivo de eventos",
-          "Integración de telemetría y GPS en vivo",
-          "Marca Blanca (Resultados en dominio propio)",
-          "Soporte multidisciplinario avanzado",
-          "API pública de resultados e integraciones",
-          "Pantalla de resultados adaptada a Streaming/TV"
-        ]
-      }
-    ]
-  },
-  duo: {
-    title: "Pack Dúo (Ecosistema)",
-    subtitle: "SIGDEF + SportTrack Integrados",
-    color: "#3daa94",
-    cardClass: "duo-theme",
-    badgeClass: "duo-badge",
-    checkClass: "icon-check-green",
-    btnFeaturedClass: "btn-acc-green",
-    btnOutlineClass: "btn-acc-outline",
-    tiers: [
-      {
-        id: "duo-s",
-        name: "Plan Esencial",
-        limit: "Hasta 200 atletas activos",
-        price: "$75",
-        period: "/mes",
-        annualPrice: "Anual: $750/año",
-        featured: false,
-        icon: Layers,
-        color: "#3daa94",
-        features: [
-          "Plataformas integradas (SIGDEF + SportTrack)",
-          "Sincronización básica de padrón a regatas",
-          "Legajo básico y 1 consola de cronometrista",
-          "Pizarra de resultados en vivo",
-          "50% de descuento en setup inicial",
-          "1.5% fee de inscripción en torneos de pago",
-          "Soporte técnico prioritario por email"
-        ]
-      },
-      {
-        id: "duo-m",
-        name: "Plan Profesional",
-        limit: "Hasta 400 atletas activos",
-        price: "$170",
-        period: "/mes",
-        annualPrice: "Anual: $1,700/año",
-        featured: true,
-        icon: Sparkles,
-        color: "#3daa94",
-        features: [
-          "SIGDEF Standard + SportTrack Standard",
-          "Sincronización automática de atletas de clubes",
-          "Inscripción descentralizada con validación",
-          "Pagos unificados (Afiliación + Inscripción torneo)",
-          "Consolas multi-juez SignalR sincronizadas",
-          "Setup inicial e inducción técnica incluidos",
-          "2.0% fee de inscripción en torneos de pago"
-        ]
-      },
-      {
-        id: "duo-l",
-        name: "Plan Ecosistema",
-        limit: "Atletas ilimitados",
-        price: "$350",
-        period: "/mes",
-        annualPrice: "Anual: $3,500/año",
-        featured: false,
-        icon: Zap,
-        color: "#3daa94",
-        features: [
-          "SIGDEF Premium + SportTrack Premium",
-          "App Móvil Integrada (Legajo + Live Tracking)",
-          "Marca Blanca (Dominio propio y logos incluidos)",
-          "Mensajería y notificaciones masivas oficiales",
-          "Globo 3D y telemetría avanzada de regatas",
-          "Soporte VIP 24/7 y Setup prioritario incluido",
-          "Fee de inscripción reducido al 1.0%"
-        ]
-      }
-    ]
-  }
-};
+import { plansDataBase } from '../../data/plansData';
+import { PlanTierCard } from '../ui/PlanTierCard';
 
 export function Servicios({ selectNivel }) {
   const [selectedTab, setSelectedTab] = useState('duo');
@@ -234,15 +16,24 @@ export function Servicios({ selectNivel }) {
       .catch((err) => {
         console.warn('No se pudieron cargar precios del catálogo; se usan valores locales.', err);
       });
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const currentPlan = plansData[selectedTab];
 
   return (
-    <section id="servicios" style={{ background: 'rgba(26, 48, 85, 0.08)', borderTop: '1px solid rgba(45,140,80,0.1)', borderBottom: '1px solid rgba(45,140,80,0.1)', padding: '3.5rem 0' }}>
+    <section
+      id="servicios"
+      style={{
+        background: 'rgba(26, 48, 85, 0.08)',
+        borderTop: '1px solid rgba(45,140,80,0.1)',
+        borderBottom: '1px solid rgba(45,140,80,0.1)',
+        padding: '3.5rem 0',
+      }}
+    >
       <div className="container">
-        
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <h2 style={{ fontSize: '2.25rem', marginBottom: '0.5rem' }}>
             Nuestros <span className="gradient-text-joint">Planes de Servicio</span>
@@ -278,10 +69,10 @@ export function Servicios({ selectNivel }) {
                   transition: 'var(--transition)',
                   boxShadow: isSelected ? '0 8px 24px rgba(0,0,0,0.2)' : 'none',
                 }}
-                onMouseEnter={e => {
+                onMouseEnter={(e) => {
                   if (!isSelected) e.target.style.borderColor = value.color;
                 }}
-                onMouseLeave={e => {
+                onMouseLeave={(e) => {
                   if (!isSelected) e.target.style.borderColor = 'rgba(255,255,255,0.08)';
                 }}
               >
@@ -297,73 +88,15 @@ export function Servicios({ selectNivel }) {
         </div>
 
         <div className="grid-3 plans-grid">
-          {currentPlan.tiers.map((tier) => {
-            const isFeatured = tier.featured;
-            const CardIcon = tier.icon;
-            const annualColor = selectedTab === 'sporttrack' ? '#0070f3' : selectedTab === 'duo' ? '#3daa94' : '#10b981';
-
-            return (
-              <div
-                key={tier.id}
-                className={`tier-card plans-card ${currentPlan.cardClass} ${isFeatured ? 'featured' : ''}`}
-                style={{ 
-                  border: isFeatured 
-                    ? `2px solid ${currentPlan.color}` 
-                    : '1px solid rgba(255, 255, 255, 0.06)',
-                }}
-              >
-                {isFeatured && (
-                  <div className={`plan-badge`} style={{ backgroundColor: currentPlan.color }}>
-                    Más Popular
-                  </div>
-                )}
-                
-                <div className="plans-card-body">
-                  <div className="plan-icon-wrapper" style={{
-                    color: isFeatured ? currentPlan.color : '#94a3b8',
-                  }}>
-                    <CardIcon size={18} />
-                  </div>
-
-                  <h3 className="plans-card-title">{tier.name}</h3>
-                  <span className="plans-card-limit">{tier.limit}</span>
-
-                  <div className="plans-card-price">
-                    <span className="plans-price-value">{tier.price}</span>
-                    <span className="plans-price-period">{tier.period}</span>
-                  </div>
-                  
-                  <span className="plans-card-annual" style={{ color: annualColor }}>
-                    {tier.annualPrice}
-                  </span>
-
-                  <ul className="feature-list plans-feature-list">
-                    {tier.features.map((feat, idx) => (
-                      <li key={idx}>
-                        <Check size={14} className={currentPlan.checkClass} />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="plans-card-cta">
-                  <button
-                    onClick={() => selectNivel(`${selectedTab === 'duo' ? 'Pack Dúo' : selectedTab === 'sporttrack' ? 'Solo SportTrack' : 'Solo SIGDEF'} - ${tier.name}`)}
-                    className={isFeatured ? currentPlan.btnFeaturedClass : currentPlan.btnOutlineClass}
-                    style={{
-                      width: '100%',
-                      margin: 0,
-                      padding: '0.55rem 1rem !important',
-                      fontSize: '0.85rem',
-                    }}
-                  >
-                    Consultar Plan
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+          {currentPlan.tiers.map((tier) => (
+            <PlanTierCard
+              key={tier.id}
+              tier={tier}
+              planFamily={currentPlan}
+              selectedTab={selectedTab}
+              onSelectNivel={selectNivel}
+            />
+          ))}
         </div>
       </div>
     </section>
